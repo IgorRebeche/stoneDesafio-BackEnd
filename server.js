@@ -1,8 +1,9 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.get('/', cors(), function (req, res) {
+  res.json('{Hello World: "Teste"}');
 });
 
 app.listen(3000, function () {
