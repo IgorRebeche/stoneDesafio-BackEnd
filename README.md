@@ -1,7 +1,7 @@
 # stoneDesafio-BackEnd
 Clone e use npm start para abrir o servidor. 
 
-#Banco de dados
+## Banco de dados
 Utilizei o firebase por sua praticidade e ser de facil integração com o ambiente do angular/node
 O servidor consome somente os dados de usuario.
 
