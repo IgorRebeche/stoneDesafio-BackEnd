@@ -53,25 +53,32 @@ router.get('/users', (req, res) => {
 router.post('/users/add', (req, res) => {
   var userResponse = req.body;
 
-  userRef.child(userResponse.matricula).on("value", function(snapshot) {
-    if(snapshot.exists){
-      
+  userRef.child(userResponse.matricula).on("value", function (snapshot) {
+    if (snapshot.exists) {
+      status = {
+        status: "exist"
+      };
+      res.json(status);
+    }else{
       userRef.child(userResponse.matricula).set(userResponse, (error) => {
-        if(error){
-          status = {status: "exist"};
+        if (error) {
+          status = {
+            status: "error"
+          };
           res.json(status);
-        }else{
-          status = {status: "sent"};
+        } else {
+          status = {
+            status: "sent"
+          };
           res.json(status);
         }
       });
-
     }
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
 
-  
+
 
 });
 //Rota para Deletar usuarios
@@ -91,16 +98,20 @@ router.post('/users/update', (req, res) => {
   var userResponse = req.body;
   console.log(userResponse)
   userRef.child(userResponse.matricula).update(userResponse, (error) => {
-    if(error){
-      status = {status: "error"};
+    if (error) {
+      status = {
+        status: "error"
+      };
       res.json(status);
       console.log('{"status":"error"}');
-    }else{
-      status = {status: "sent"};
+    } else {
+      status = {
+        status: "sent"
+      };
       res.json(status);
     }
   });
-  
+
 
 });
 
