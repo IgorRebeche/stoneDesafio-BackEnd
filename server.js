@@ -4,7 +4,10 @@ var bodyParser = require('body-parser')
 var fb = require("firebase-admin");
 var app = express();
 var api = require('./api/firebaseAPI');
-
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 app.use("/api", api);
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,6 +19,7 @@ app.get('/', function (req, res) {
 });
 
 
+app.listen(port);
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Example app listening on port 8000!');
 });
