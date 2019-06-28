@@ -55,7 +55,7 @@ router.post('/users/add', (req, res) => {
   console.log("Post User: ", userResponse);
   userRef.child(userResponse.matricula).on("value", function (snapshot) {
     console.log("Post User returned from search: ", snapshot.val());
-    if (snapshot.val() == null) {
+    if (snapshot.val() != null) {
       status = {
         status: "exist"
       };
