@@ -53,7 +53,7 @@ router.get('/users', (req, res) => {
 router.post('/users/add', (req, res) => {
   var userResponse = req.body;
   console.log("Post User: ", userResponse);
-  userRef.child(userResponse.matricula).on("value", function (snapshot) {
+  userRef.child(userResponse.matricula).once("value", function (snapshot) {
     console.log("Post User returned from search: ", snapshot.val());
     if (snapshot.val() != null) {
       status = {
