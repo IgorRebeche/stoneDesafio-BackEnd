@@ -52,8 +52,9 @@ router.get('/users', (req, res) => {
 //Verificar se ja existe o usuario (pela matricula)
 router.post('/users/add', (req, res) => {
   var userResponse = req.body;
-
+  console.log("Post User: ", userResponse);
   userRef.child(userResponse.matricula).on("value", function (snapshot) {
+    console.log("Post User returned from search: ", snapshot);
     if (snapshot.exists) {
       status = {
         status: "exist"
